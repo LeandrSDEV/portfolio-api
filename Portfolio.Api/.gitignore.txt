@@ -1,0 +1,20 @@
+# Visual Studio files
+.vs/
+*.user
+*.suo
+
+# Build results
+bin/
+obj/
+
+# Temporary files
+*.log
+*.tlog
+
+# NuGet packages
+packages/
+*.nupkg
+*.snupkg
+
+# Other
+*.DS_Store
