@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Novo Perfil",
+    "Projects": [
+      {
+        "Path": "..\\Portfolio.Blazor\\Portfolio.Blazor.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Portfolio.Api\\Portfolio.Api.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
