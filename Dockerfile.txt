@@ -1,26 +1,23 @@
-# Runtime
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 WORKDIR /app
 EXPOSE 8080
 ENV ASPNETCORE_URLS=http://+:8080
 
-# Build
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
-# Copia o csproj primeiro
-COPY Portfolio.Api.csproj .
+# copia apenas o csproj primeiro (boa prática)
+COPY Portfolio.Api/Portfolio.Api.csproj Portfolio.Api/
 
-# Restaura dependências
-RUN dotnet restore
+# restaura dependências
+RUN dotnet restore Portfolio.Api/Portfolio.Api.csproj
 
-# Copia o restante do código
+# copia tudo
 COPY . .
 
-# Publica
-RUN dotnet publish -c Release -o /app/publish
+# publica
+RUN dotnet publish Portfolio.Api/Portfolio.Api.csproj -c Release -o /app/publish
 
-# Final
 FROM base AS final
 WORKDIR /app
 COPY --from=build /app/publish .
