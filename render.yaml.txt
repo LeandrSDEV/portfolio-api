@@ -4,8 +4,8 @@ services:
     env: docker
     plan: free
     branch: main
-    dockerfilePath: ./Dockerfile
-    rootDir: .
+    dockerfilePath: Portfolio.Api/Dockerfile
+    rootDir: Portfolio.Api
     envVars:
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
