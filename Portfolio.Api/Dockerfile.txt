@@ -1,14 +1,23 @@
-# Imagem base do .NET para rodar a API
+# Runtime
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 WORKDIR /app
 EXPOSE 8080
 ENV ASPNETCORE_URLS=http://+:8080
 
-# Imagem para build
+# Build
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
-COPY . .
+
+# Copia o csproj primeiro
+COPY Portfolio.Api.csproj .
+
+# Restaura dependências
 RUN dotnet restore
+
+# Copia o restante do código
+COPY . .
+
+# Publica
 RUN dotnet publish -c Release -o /app/publish
 
 # Final
